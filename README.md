@@ -1,4 +1,4 @@
-# AngularFirebaseAppDemo
+## AngularFirebaseAppDemo
 
 ## Development server
 
