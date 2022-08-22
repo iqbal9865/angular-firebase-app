@@ -12,7 +12,6 @@ export class CartService {
 
   addItem(book: any) {
     this.cart.push(book);
-
   }
 
   getItems(): any {
