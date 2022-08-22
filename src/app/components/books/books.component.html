@@ -1,23 +1,11 @@
 
 <div class="container mx-auto my-10">
-  <div class="grid grid-cols-6 gap-8">
-    <div *ngFor="let book of books">
-      <div class="">
-        <img [src]="book.img" [alt]="book.name">
-        <p class="capitalize text-gray-700 my-3
-          text-sm	font-semibold text-justify">
-          {{ book.name }}
-        </p>
-        <div class="flex justify-between items-center">
-          <p class="font-bold text-gray-700">
-            TK. {{ book.price }}
-          </p>
-          <button class="bg-teal-500 hover:bg-teal-700
-            text-white font-bold py-1 px-2 rounded-sm">
-            Add to Cart
-          </button>
-        </div>
-      </div>
-    </div>
+  <div class="grid grid-cols-6 gap-2">
+    <ng-container *ngFor="let book of books">
+      <app-book class="py-2 px-3 hover:bg-slate-100
+        transition delay-120" [book]="book"
+        (bookEmitter)="addToCarts($event)">
+      </app-book>
+    </ng-container>
   </div>
 </div>

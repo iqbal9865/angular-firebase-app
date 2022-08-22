@@ -9,6 +9,7 @@ export class BooksComponent implements OnInit {
 
   constructor() { }
 
+  cart: [] = [];
   books: any = [
     {
       name: 'sellowship of the ring',
@@ -42,10 +43,12 @@ export class BooksComponent implements OnInit {
     }
   ]
 
+  addToCarts(book: any) {
+    console.log(book);
+
+  }
 
   ngOnInit(): void {
-    console.log(this.books);
-
   }
 
 
