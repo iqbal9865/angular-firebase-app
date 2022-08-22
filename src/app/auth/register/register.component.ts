@@ -9,7 +9,23 @@ export class RegisterComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  registerForm: registerDataModel = {
+    username: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
   }
 
+  registration() {
+    console.log(this.registerForm);
+  }
+  ngOnInit(): void {}
+
+}
+
+export interface registerDataModel {
+  username: string,
+  email: string,
+  password: string,
+  confirmPassword: string
 }
