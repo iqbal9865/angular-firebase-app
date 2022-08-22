@@ -1,11 +1,11 @@
 
 <div class="container mx-auto my-10">
-  <div class="grid grid-cols-6 gap-2">
+  <div class="grid sm:grid-cols-2 md:grid-cols-6 gap-2">
     <ng-container *ngFor="let book of books">
       <app-book class="py-2 px-3 hover:bg-slate-100
-        transition delay-120" [book]="book"
-        (bookEmitter)="addToCarts($event)">
+        transition delay-120" [book]="book">
       </app-book>
     </ng-container>
   </div>
+  <app-carts></app-carts>
 </div>

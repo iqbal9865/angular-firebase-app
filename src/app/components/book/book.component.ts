@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-
+import { CartService } from 'src/app/services/cart.service';
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
@@ -8,12 +8,11 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class BookComponent implements OnInit {
 
   @Input() book: any;
-  @Output() bookEmitter = new EventEmitter();
 
-  constructor() { }
+  constructor(private cartservice: CartService) { }
 
   addToCart() {
-    this.bookEmitter.emit(this.book);
+    this.cartservice.addItem(this.book)
   }
 
   ngOnInit(): void {
