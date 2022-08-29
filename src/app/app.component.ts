@@ -10,7 +10,10 @@ import { firebaseConfig } from './firebase.config';
 export class AppComponent implements OnInit {
   title = 'angular-firebase-app-demo';
 
+  constructor() { }
+
   ngOnInit():void {
    initializeApp(firebaseConfig);
   }
+
 }

@@ -51,8 +51,8 @@
       <div class="mt-7">
         <button type="submit" class="block bg-blue-500 text-white px-3 py-2 rounded cursor-pointer w-full"
         [disabled]="registrationForm.form.invalid">
-        <ng-container *ngIf="isLoading">Loading...</ng-container>
-        <ng-container *ngIf="!isLoading">Submit</ng-container>
+        <ng-container *ngIf="isLoading()">Loading...</ng-container>
+        <ng-container *ngIf="!isLoading()">Submit</ng-container>
       </button>
       </div>
     </form>

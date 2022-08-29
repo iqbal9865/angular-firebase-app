@@ -23,16 +23,12 @@
 
       <div class="pt-3">
         <button type="submit" class="block bg-blue-500 text-white px-3 py-2 rounded cursor-pointer w-full"
-        [disabled]="loginForm.form.invalid">
-          <ng-container *ngIf="isLoading">Loading...</ng-container>
-          <ng-container *ngIf="!isLoading">Submit</ng-container>
+          [disabled]="loginForm.form.invalid">
+          <ng-container *ngIf="isLoading()">Loading...</ng-container>
+          <ng-container *ngIf="!isLoading()">Submit</ng-container>
         </button>
       </div>
 
-      <div class="my-2">
-        <span class="text-green-600" >{{ loginSuccess }}</span>
-        <span class="text-red-600">{{ loginError }}</span>
-      </div>
     </form>
   </div>
 </div>
