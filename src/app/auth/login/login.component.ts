@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  form: LoginForm = {
+  LoginForm: LoginForm = {
     email: '',
     password: ''
   }
@@ -18,9 +18,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    console.log(this.form);
-
-
+    console.log(this.LoginForm);
   }
 }
 

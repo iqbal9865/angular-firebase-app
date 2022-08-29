@@ -1,20 +1,30 @@
 <div class="container mx-auto">
   <div class="flex justify-center items-center relative">
-    <form (ngSubmit)="login()" class="border p-10 sm:w-3/4 md:w-2/4 rounded-md absolute top-20">
+    <form (ngSubmit)="login()" class="border p-10 sm:w-3/4 md:w-2/4 rounded-md absolute top-20"
+    #loginForm="ngForm">
       <div class="my-5">
         <label for="email" class="block py-1">Enter Your Email</label>
         <input type="email" class="block w-full rounded" placeholder="Enter Your Email"
-        name="email" [(ngModel)]="form.email" >
+        name="email" [(ngModel)]="LoginForm.email"  #email="ngModel" required>
+
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="mt-2">
+          <span class="text-red-600">Email should be valid.</span>
+        </div>
       </div>
 
       <div class="my-5">
         <label for="password" class="block py-1">Enter Your Password</label>
         <input type="password" class="block w-full rounded" placeholder="Enter Your Password"
-        name="password" [(ngModel)]="form.password" >
+        name="password" [(ngModel)]="LoginForm.password" #password="ngModel" required>
+
+        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="mt-2">
+          <span class="text-red-600"> Password does not match. </span>
+        </div>
       </div>
 
       <div class="pt-3">
-        <input type="submit" class="block bg-blue-500 text-white px-3 py-2 rounded cursor-pointer w-full">
+        <input type="submit" class="block bg-blue-500 text-white px-3 py-2 rounded cursor-pointer w-full"
+        [disabled]="loginForm.form.invalid">
       </div>
     </form>
   </div>
