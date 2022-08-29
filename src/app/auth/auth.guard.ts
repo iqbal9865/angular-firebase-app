@@ -8,9 +8,8 @@ import { AuthService } from './auth.service';
 })
 export class AuthGuard implements CanActivate {
   constructor (private authservice: AuthService) { }
-  
+
   canActivate() {
     return this.authservice.isAuthenticated;
   }
-
 }
