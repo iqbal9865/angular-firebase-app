@@ -26,10 +26,8 @@ export class AuthService {
         console.log(user.email + ' login successfully');
       })
       .catch((error) => {
-        const errorCode = error.code;
         const errorMessage = error.message;
         this.isAuthenticated = false;
-        console.log('error message: ' + errorMessage);
       })
       .finally(() => {
         this.isLoading = false;
@@ -53,10 +51,8 @@ export class AuthService {
         this.router.navigate([''])
       })
       .catch((error) => {
-        const errorCode = error.code;
         const errorMessage = error.message;
         this.isAuthenticated = false;
-        console.log('error message: ' + errorMessage);
       })
       .finally(() => {
         this.isLoading = false;
@@ -72,5 +68,4 @@ export class AuthService {
 
     })
   }
-
 }
