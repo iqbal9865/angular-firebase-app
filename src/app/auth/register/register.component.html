@@ -1,11 +1,11 @@
 <div class="container mx-auto">
   <div class="flex justify-center items-center relative">
-    <form class="border p-10 sm:w-3/4 md:w-2/4 rounded-md absolute top-10"
-    (ngSubmit)="registration()" #registrationForm="ngForm">
+    <form class="border p-10 sm:w-3/4 md:w-2/4 rounded-md absolute top-10" (ngSubmit)="registration()"
+      #registrationForm="ngForm">
       <div class="my-5">
         <label for="username" class="block py-1">Enter Your Name</label>
-        <input type="text" class="block w-full rounded" placeholder="Enter Your Name"
-        name="username" [(ngModel)]="registerForm.username" #username="ngModel" required>
+        <input type="text" class="block w-full rounded" placeholder="Enter Your Name" name="username"
+          [(ngModel)]="registerForm.username" #username="ngModel" required>
 
         <div *ngIf="username.invalid && (username.dirty || username.touched)" class="mt-2">
           <span class="text-red-600">Username can't be empty</span>
@@ -16,8 +16,8 @@
 
       <div class="my-5">
         <label for="email" class="block py-1">Enter Your Email</label>
-        <input type="email" class="block w-full rounded" placeholder="Enter Your Email"
-        name="email" [(ngModel)]="registerForm.email" #email="ngModel" required>
+        <input type="email" class="block w-full rounded" placeholder="Enter Your Email" name="email"
+          [(ngModel)]="registerForm.email" #email="ngModel" required>
 
         <div *ngIf="email.invalid && (email.dirty || email.touched)" class="mt-2">
           <span class="text-red-600">Email must be valid</span>
@@ -28,8 +28,8 @@
 
       <div class="my-5">
         <label for="password" class="block py-1">Enter Your Password</label>
-        <input type="password" class="block w-full rounded" placeholder="Enter Your Password"
-        name="password" [(ngModel)]="registerForm.password" #password="ngModel" required>
+        <input type="password" class="block w-full rounded" placeholder="Enter Your Password" name="password"
+          [(ngModel)]="registerForm.password" #password="ngModel" required>
 
         <div *ngIf="password.invalid && (password.dirty || password.touched)" class="mt-2">
           <span class="text-red-600"> Password must be valid </span>
@@ -40,8 +40,8 @@
 
       <div class="my-5">
         <label for="confirm-password" class="block py-1">Confirm Password</label>
-        <input type="password" class="block w-full rounded" placeholder="Confirm Password"
-        name="confirmPassword" [(ngModel)]="registerForm.confirmPassword" #confirmPassword="ngModel" required>
+        <input type="password" class="block w-full rounded" placeholder="Confirm Password" name="confirmPassword"
+          [(ngModel)]="registerForm.confirmPassword" #confirmPassword="ngModel" required>
 
         <div *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)" class="mt-2">
           <span class="text-red-600">Password must be same</span>
@@ -49,8 +49,11 @@
       </div>
 
       <div class="mt-7">
-        <input type="submit" class="block bg-blue-500 text-white px-3 py-2 rounded cursor-pointer w-full"
-        [disabled]="registrationForm.form.invalid" >
+        <button type="submit" class="block bg-blue-500 text-white px-3 py-2 rounded cursor-pointer w-full"
+        [disabled]="registrationForm.form.invalid">
+        <ng-container *ngIf="isLoading">Loading...</ng-container>
+        <ng-container *ngIf="!isLoading">Submit</ng-container>
+      </button>
       </div>
     </form>
   </div>
