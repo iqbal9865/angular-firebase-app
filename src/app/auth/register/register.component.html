@@ -55,6 +55,13 @@
         <ng-container *ngIf="!isLoading()">Submit</ng-container>
       </button>
       </div>
+
+      <div *ngIf="!matchPassword()">
+        <p class="text-red-400">Password Does Not Match</p>
+      </div>
+
+      <p class="text-red-400 my-2" >{{ errorMessage }}</p>
+
     </form>
   </div>
 </div>

@@ -13,15 +13,20 @@ export class LoginComponent implements OnInit {
     email: '',
     password: ''
   }
-
+  errorMessage: string = '';
   constructor(private authservice: AuthService) { }
 
-  login() {
-    this.authservice.login(this.LoginForm)
+  async login() {
+    await this.authservice.login(this.LoginForm)
+    this.findError()
   }
 
   isLoading() {
     return this.authservice.isLoading;
+  }
+
+  findError() {
+    this.errorMessage = this.authservice.errorMessage;
   }
 
   ngOnInit(): void {

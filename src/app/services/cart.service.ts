@@ -21,4 +21,8 @@ export class CartService {
   removeItem(book: any) {
     this.cart = this.cart.filter((item: any) => item.name !== book.name);
   }
+  
+  clearCart() {
+    this.cart = []
+  }
 }

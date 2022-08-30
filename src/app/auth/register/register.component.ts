@@ -17,16 +17,28 @@ export class RegisterComponent implements OnInit {
     confirmPassword: ''
   }
 
-  registration() {
-    this.authservice.register(this.registerForm);
+  errorMessage: string = '';
+
+  async registration() {
+    await this.authservice.register(this.registerForm);
+    this.findError()
   }
 
   isLoading() {
     return this.authservice.isLoading;
   }
 
-  ngOnInit(): void { }
+  matchPassword() {
+    return this.authservice.passwordMatch;
+  }
 
+  findError() {
+    this.errorMessage = this.authservice.errorMessage;
+  }
+
+  ngOnInit(): void {
+
+  }
 }
 
 export interface registerDataModel {

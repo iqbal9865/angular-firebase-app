@@ -3,30 +3,32 @@ import { LoginForm } from './login/login.component';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "firebase/auth";
 import { registerDataModel } from './register/register.component';
 import { Router } from '@angular/router';
+import { CartService } from '../services/cart.service';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private router: Router) { }
+  constructor( private router: Router, private cartservice: CartService ) { }
 
   isLoading: boolean = false;
   passwordMatch: boolean = true;
   isAuthenticated: boolean = false;
+  errorMessage: string = '';
 
-  login(LoginForm: LoginForm) {
+  async login(LoginForm: LoginForm) {
     if (this.isLoading) return;
     this.isLoading = true;
     const auth = getAuth();
-    signInWithEmailAndPassword(auth, LoginForm.email, LoginForm.password)
+    await signInWithEmailAndPassword(auth, LoginForm.email, LoginForm.password)
       .then((userCredential) => {
         const user = userCredential.user;
         this.isAuthenticated = true;
         this.router.navigate([''])
-        console.log(user.email + ' login successfully');
       })
       .catch((error) => {
         const errorMessage = error.message;
+        this.errorMessage = errorMessage;
         this.isAuthenticated = false;
       })
       .finally(() => {
@@ -34,9 +36,8 @@ export class AuthService {
       });
   }
 
-  register(registerForm: registerDataModel) {
+  async register(registerForm: registerDataModel) {
     if (this.isLoading) return;
-
     this.isLoading = true;
     if (registerForm.password !== registerForm.confirmPassword) {
       this.passwordMatch = false;
@@ -44,7 +45,7 @@ export class AuthService {
     }
 
     const auth = getAuth();
-    createUserWithEmailAndPassword(auth, registerForm.email, registerForm.password)
+    await createUserWithEmailAndPassword(auth, registerForm.email, registerForm.password)
       .then((userCredential) => {
         console.log(userCredential);
         this.isAuthenticated = true;
@@ -52,6 +53,7 @@ export class AuthService {
       })
       .catch((error) => {
         const errorMessage = error.message;
+        this.errorMessage = errorMessage;
         this.isAuthenticated = false;
       })
       .finally(() => {
@@ -64,8 +66,10 @@ export class AuthService {
     signOut(auth).then(() => {
       this.router.navigate(['login'])
       this.isAuthenticated = false;
+      this.cartservice.clearCart();
     }).catch((error) => {
-
+      const errorMessage = error.message;
+      this.errorMessage = errorMessage;
     })
   }
 }
