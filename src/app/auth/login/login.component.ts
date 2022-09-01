@@ -21,6 +21,10 @@ export class LoginComponent implements OnInit {
     this.findError()
   }
 
+  googleSignIn() {
+    this.authservice.googleSignIn();
+  }
+
   isLoading() {
     return this.authservice.isLoading;
   }

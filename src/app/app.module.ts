@@ -7,18 +7,23 @@ import { BookComponent } from './components/book/book.component';
 import { CartsComponent } from './components/carts/carts.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AuthModule } from './auth/auth.module';
+import { ServicesComponent } from './components/services/services.component';
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
     BooksComponent,
     BookComponent,
     CartsComponent,
-    NavbarComponent
+    NavbarComponent,
+    ServicesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AuthModule
+    AuthModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

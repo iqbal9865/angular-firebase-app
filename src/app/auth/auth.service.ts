@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LoginForm } from './login/login.component';
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 import { registerDataModel } from './register/register.component';
 import { Router } from '@angular/router';
 import { CartService } from '../services/cart.service';
@@ -9,7 +9,7 @@ import { CartService } from '../services/cart.service';
 })
 export class AuthService {
 
-  constructor( private router: Router, private cartservice: CartService ) { }
+  constructor(private router: Router, private cartservice: CartService) { }
 
   isLoading: boolean = false;
   passwordMatch: boolean = true;
@@ -58,6 +58,28 @@ export class AuthService {
       })
       .finally(() => {
         this.isLoading = false;
+      });
+  }
+
+  googleSignIn() {
+    const provider = new GoogleAuthProvider();
+    const auth = getAuth();
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential?.accessToken;
+        const user = result.user;
+        this.isAuthenticated = true;
+        this.router.navigate([''])
+
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        const email = error.customData.email;
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        this.errorMessage = errorMessage;
+        this.isAuthenticated = false;
       });
   }
 
