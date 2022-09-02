@@ -1,21 +1,22 @@
 <a class="book-container">
-  <img [src]="book.img" [alt]="book.name" >
-  <p class="capitalize text-gray-700 my-2
-    text-sm	font-semibold text-justify">
+  <img [src]="book.img" [alt]="book.name" />
+  <p class="capitalize text-gray-700 my-2 text-sm font-semibold text-justify">
     {{ book.name }}
   </p>
   <div class="">
-    <p class="font-bold text-gray-700 pb-2">
-      TK. {{ book.price }}
-    </p>
-    <button *ngIf="!isInCart" class="bg-teal-500 hover:bg-teal-700
-      text-white font-bold p-1 rounded-sm"
-      (click)="addToCart()">
+    <p class="font-bold text-gray-700 pb-2">TK. {{ book.price }}</p>
+    <button
+      *ngIf="!isInCart"
+      class="bg-teal-500 hover:bg-teal-700 text-white font-bold p-1 rounded-sm"
+      (click)="addToCart()"
+    >
       Add to Cart
     </button>
-    <button *ngIf="isInCart" class="bg-teal-500 hover:bg-teal-700
-      text-white font-bold p-1 rounded-sm"
-      (click)="removeFromCart()">
+    <button
+      *ngIf="isInCart"
+      class="bg-teal-500 hover:bg-teal-700 text-white font-bold p-1 rounded-sm"
+      (click)="removeFromCart()"
+    >
       Remove From Cart
     </button>
   </div>

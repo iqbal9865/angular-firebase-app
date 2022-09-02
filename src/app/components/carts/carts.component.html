@@ -4,16 +4,15 @@
     <tbody *ngFor="let book of getCart()">
       <tr class="bg-slate-200 rounded">
         <td>
-          <img [src]="book.img" [alt]="book.img" class="w-8 my-2 mx-4">
+          <img [src]="book.img" [alt]="book.img" class="w-8 my-2 mx-4" />
         </td>
         <td>
           <p>{{ book.name }}</p>
         </td>
         <td>
-          <p>{{ book.price | currency : "TK "}}</p>
+          <p>{{ book.price | currency: "TK " }}</p>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
-

@@ -8,7 +8,7 @@ import { ServiceService } from 'src/app/services/service.service';
 })
 export class ServicesComponent implements OnInit {
 
-  constructor(private serviceservices: ServiceService) { }
+  constructor( private serviceservices: ServiceService ) { }
 
   servicesItems: any = [];
 

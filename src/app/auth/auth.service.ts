@@ -1,15 +1,21 @@
 import { Injectable } from '@angular/core';
 import { LoginForm } from './login/login.component';
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+  signOut,
+} from 'firebase/auth';
 import { registerDataModel } from './register/register.component';
 import { Router } from '@angular/router';
 import { CartService } from '../services/cart.service';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-
-  constructor(private router: Router, private cartservice: CartService) { }
+  constructor(private router: Router, private cartservice: CartService) {}
 
   isLoading: boolean = false;
   passwordMatch: boolean = true;
@@ -24,7 +30,7 @@ export class AuthService {
       .then((userCredential) => {
         const user = userCredential.user;
         this.isAuthenticated = true;
-        this.router.navigate([''])
+        this.router.navigate(['']);
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -45,11 +51,15 @@ export class AuthService {
     }
 
     const auth = getAuth();
-    await createUserWithEmailAndPassword(auth, registerForm.email, registerForm.password)
+    await createUserWithEmailAndPassword(
+      auth,
+      registerForm.email,
+      registerForm.password
+    )
       .then((userCredential) => {
         console.log(userCredential);
         this.isAuthenticated = true;
-        this.router.navigate([''])
+        this.router.navigate(['']);
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -70,8 +80,7 @@ export class AuthService {
         const token = credential?.accessToken;
         const user = result.user;
         this.isAuthenticated = true;
-        this.router.navigate([''])
-
+        this.router.navigate(['']);
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -85,13 +94,15 @@ export class AuthService {
 
   logout() {
     const auth = getAuth();
-    signOut(auth).then(() => {
-      this.router.navigate(['login'])
-      this.isAuthenticated = false;
-      this.cartservice.clearCart();
-    }).catch((error) => {
-      const errorMessage = error.message;
-      this.errorMessage = errorMessage;
-    })
+    signOut(auth)
+      .then(() => {
+        this.router.navigate(['login']);
+        this.isAuthenticated = false;
+        this.cartservice.clearCart();
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        this.errorMessage = errorMessage;
+      });
   }
 }

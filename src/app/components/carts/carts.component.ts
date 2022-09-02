@@ -8,12 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartsComponent implements OnInit {
 
-  carts: any = [];
-
-  constructor( private cartservice: CartService ) {
-  }
+  constructor( private cartservice: CartService ) { }
 
   ngOnInit(): void {
+
   }
 
   getCart() {
