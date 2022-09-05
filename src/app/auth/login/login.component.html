@@ -1,29 +1,52 @@
 <div class="container mx-auto">
-  <div class="sm:5/6 md:w-3/6	mx-auto border p-10 mt-20">
+  <div class="sm:5/6 md:w-3/6 mx-auto border p-10 mt-20">
     <form (ngSubmit)="login()" class="" #loginForm="ngForm">
       <div class="my-5">
         <label for="email" class="block py-1">Enter Your Email</label>
-        <input type="email" class="block w-full rounded" placeholder="Enter Your Email" name="email"
-          [(ngModel)]="LoginForm.email" #email="ngModel" required>
+        <input
+          type="email"
+          class="block w-full rounded"
+          placeholder="Enter Your Email"
+          name="email"
+          [(ngModel)]="LoginForm.email"
+          #email="ngModel"
+          required
+        />
 
-        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="mt-2">
+        <div
+          *ngIf="email.invalid && (email.dirty || email.touched)"
+          class="mt-2"
+        >
           <span class="text-red-600">Email should be valid.</span>
         </div>
       </div>
 
       <div class="my-5">
         <label for="password" class="block py-1">Enter Your Password</label>
-        <input type="password" class="block w-full rounded" placeholder="Enter Your Password" name="password"
-          [(ngModel)]="LoginForm.password" #password="ngModel" required>
+        <input
+          type="password"
+          class="block w-full rounded"
+          placeholder="Enter Your Password"
+          name="password"
+          [(ngModel)]="LoginForm.password"
+          #password="ngModel"
+          required
+        />
 
-        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="mt-2">
+        <div
+          *ngIf="password.invalid && (password.dirty || password.touched)"
+          class="mt-2"
+        >
           <span class="text-red-600"> Password does not match. </span>
         </div>
       </div>
 
       <div class="pt-3">
-        <button type="submit" class="block bg-blue-500 text-white px-3 py-2 rounded cursor-pointer w-full"
-          [disabled]="loginForm.form.invalid">
+        <button
+          type="submit"
+          class="block bg-blue-500 text-white px-3 py-2 rounded cursor-pointer w-full"
+          [disabled]="loginForm.form.invalid"
+        >
           <ng-container *ngIf="isLoading()">Loading...</ng-container>
           <ng-container *ngIf="!isLoading()">Submit</ng-container>
         </button>
@@ -32,8 +55,12 @@
     </form>
 
     <div class="pt-2">
-      <button (click)="googleSignIn()" class="bg-blue-500 text-white py-2 rounded cursor-pointer w-full">Sign In With
-        Google</button>
+      <button
+        (click)="googleSignIn()"
+        class="bg-blue-500 text-white py-2 rounded cursor-pointer w-full"
+      >
+        Sign In With Google
+      </button>
     </div>
   </div>
 </div>

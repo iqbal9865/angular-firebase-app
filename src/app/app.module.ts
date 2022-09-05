@@ -9,6 +9,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { AuthModule } from './auth/auth.module';
 import { ServicesComponent } from './components/services/services.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PostsComponent } from './components/posts/posts.component';
+import { FormsModule } from '@angular/forms';
+import { CommentsComponent } from './components/comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -17,13 +20,16 @@ import { HttpClientModule } from '@angular/common/http';
     BookComponent,
     CartsComponent,
     NavbarComponent,
-    ServicesComponent
+    ServicesComponent,
+    PostsComponent,
+    CommentsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AuthModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
