@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BooksService } from 'src/app/services/books.service';
-
+import { faFileAudio } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-books',
   templateUrl: './books.component.html',

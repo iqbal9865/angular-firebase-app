@@ -8,5 +8,15 @@
         </div>
       </ng-container>
     </div>
+
+    <div>
+      <button (mouseover)="display()" (mouseout)="hide()">
+        Show
+      </button>
+    </div>
+
+    <div *ngIf="show">
+      <app-extra> </app-extra>
+    </div>
   </div>
 </div>

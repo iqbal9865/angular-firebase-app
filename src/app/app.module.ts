@@ -12,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { PostsComponent } from './components/posts/posts.component';
 import { FormsModule } from '@angular/forms';
 import { CommentsComponent } from './components/comments/comments.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ExtraComponent } from './components/extra/extra.component';
 
 @NgModule({
   declarations: [
@@ -23,13 +25,15 @@ import { CommentsComponent } from './components/comments/comments.component';
     ServicesComponent,
     PostsComponent,
     CommentsComponent,
+    ExtraComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AuthModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

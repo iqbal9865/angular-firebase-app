@@ -12,12 +12,21 @@ export class ServicesComponent implements OnInit {
 
   servicesItems: any = [];
 
+  changeText: boolean = false;
+  
   services() {
     this.serviceservices.services().subscribe((service) => {
       this.servicesItems = service.slice(0, 20);
     });
   }
 
+  show: boolean = false;
+  display() {
+    this.show = true;
+  }
+  hide() {
+    this.show = false;
+  }
   ngOnInit(): void {
     this.services()
   }
